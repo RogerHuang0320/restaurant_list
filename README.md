@@ -1,13 +1,10 @@
-# Project Title
-
-Personal Favorite Restaurant Search Engine from Roger
-
-## Getting Started
-
-Users need to get a local terminal software ready, for example, the Git Bash (for Windows).
+# Personal Favorite Restaurant Search Engine by Roger
+User can browse through the restaurants Roger likes by clicking the picture of any restaurant for more information. More information contains the type of the restaurant, address, phone number, and a brief description of the restaurant.
+On top of the restaurants list, it's a searching bar. You can type in English or Chinese characters to seach the name or the type of restaurants.
 
 ### Prerequisites
 
+Users need to get a local terminal software ready, for example, the Git Bash (for Windows).
 * nvm (download this by searching on google "nvm".)
 * Node.js (use nvm to download this.)
 * express (use npm to install express)
@@ -15,78 +12,46 @@ Users need to get a local terminal software ready, for example, the Git Bash (fo
 
 ### Installing
 
-[Click here](https://github.com/coreybutler/nvm-windows/releases) to go to the website to download nvm.
+1. Open up your terminal to clone this project
 
-use nvm to install Node.js; use your terminal to type in followiwng command.
+```
+$ git clone https://github.com/RogerHuang0320/restaurant_list.git
+```
+
+2. [Click here](https://github.com/coreybutler/nvm-windows/releases) to go to the website to download nvm.
+
+3. use nvm to install Node.js; use your terminal to type in followiwng command.
 
 ```
 $ nvm install 16.14.2
 ```
 
-Go to the file where you cloned this project, and type in followiwng command to install express.
+4. Go to the file where you cloned this project, and type in followiwng command to install express.
 
 ```
 $ npm install express@4.16.4
 ```
 
-Type in followiwng command to install nodemon.
+5. Type in followiwng command to install nodemon.
 
 ```
 $ npm install -g nodemon
 ```
 
-
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+6. Type in followiwng command to activate the router.
 
 ```
-Give an example
+$ nodemon app.js
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+7. If the terminal shows the words below, that means you have successfully open the project.
 
 ```
-Give an example
+The Express server is running on http://localhost:3000
 ```
 
-## Deployment
+8. Open up any web browser and type in "http://localhost:3000" to start to use.
 
-Add additional notes about how to deploy this on a live system
+## Contributor
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+> [Roger Huang](https://github.com/RogerHuang0320)
