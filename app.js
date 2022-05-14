@@ -23,27 +23,23 @@ app.get('/search', (req, res) => {
   if (!req.query.keywords) {
     return res.redirect('/')
   }
+  const keyword = req.query.keywords
   const keywords = req.query.keywords.trim().toLowerCase()
-
-  const filterRestaurantsData = restaurantList.filter(
-    (data) => {
-      data.name.toLowerCase().includes(keywords) ||
-        data.category.includes(keywords)
-    })
-  res.render('index', {
-    restaurants: filterRestaurantsData, keyword: req.query.keyword
-  })
-
-
+  const filteredRestaurants = restaurantList.filter(
+    restaurant =>
+      restaurant.name.toLowerCase().includes(keywords) ||
+      restaurant.category.includes(keywords)
+  )
+  console.log(filteredRestaurants)
+  res.render('index', { restaurants: filteredRestaurants, keyword })
 })
 
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = restaurantList.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
+app.get('/restaurants/:id', (req, res) => {
+  const restaurant = restaurantList.find(restaurant => restaurant.id.toString() === req.params.id)
   res.render('show', { restaurant })
 })
 
 // start and listen on the Express server
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
-  console.log(keywords)
 })
