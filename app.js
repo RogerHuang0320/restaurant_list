@@ -23,6 +23,26 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
+app.get('/restaurants/new', (req, res) => {
+  return res.render('new')
+})
+
+app.post('/restaurants', (req, res) => {
+  const name = req.body.name
+  const category = req.body.category
+  const location = req.body.location
+  const google_map = req.body.google_map
+  const phone = req.body.phone
+  const description = req.body.description
+  const image = req.body.image
+  const rating = req.body.rating
+  return restaurantList.create({
+    name, category, location, google_map, phone, description, image, rating
+  })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 // routes setting
 app.get('/', (req, res) => {
   restaurantList.find()

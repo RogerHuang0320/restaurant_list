@@ -1,0 +1,89 @@
+<header>
+  <!-- navigation -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
+          width="30" height="30" class="d-inline-block align-top" alt="好。吃">
+        我的餐廳清單
+      </a>
+    </div>
+  </nav>
+  <div class="banner"></div>
+</header>
+
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <p class="navbar-brand">You are here to add a New Restaurant.</p>
+  </div>
+</nav>
+
+<div class="container">
+  <form action="/restaurants" method="POST">
+    <div class="row">
+      <div class="col-12 col-md-10 mx-auto">
+
+        <div class="mb-3">
+          <label for="name">Restaurant Name:</label>
+          <input class="form-control" type="text" name="name">
+        </div>
+
+
+        <div class="mb-3">
+          <span class="text-secondary"><i class="fas fa-utensils pr-2"></i>
+            類別：
+          </span>
+          <input class="form-control" type="text" name="category">
+        </div>
+
+        <div class="mb-3">
+          <span class="text-secondary"><i class="fas fa-map-marker-alt pr-2"></i>
+            地址：
+          </span>
+          <input class="form-control" type="text" name="location">
+        </div>
+
+        <div class="mb-3">
+          <span class="text-secondary"><i class="fas fa-location-arrow pr-2 fa-xs"></i>
+            地址超連結：
+          </span>
+          <input class="form-control" type="url" name="google_map">
+        </div>
+
+        <div class="mb-3">
+          <span class="text-secondary">
+            <i class="fas fa-mobile-alt pr-2"></i>
+            電話：
+          </span>
+          <input class="form-control" type="tel" name="phone">
+        </div>
+
+        <div class="mb-3">
+          <span class="text-secondary">
+            <i class="fas fa-star fa-xs"></i>
+            星等：
+          </span>
+          <input class="form-control" type="number" name="rating">
+        </div>
+
+        <div class="mb-3">
+          <i class="fa fa-music"></i>
+          <label for="image">Image link</label>
+          <input type="url" class="form-control" id="image" name="image">
+        </div>
+
+        <div class="mb-3">
+          <i class="fas fa-solid fa-book-open"></i>
+          <label for="description" class="form-label">敘述</label>
+          <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+        </div>
+
+        <div>
+          <button class="btn btn-primary" type="submit">Create</button>
+          <a class="btn btn-success" href="/">back</a>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
