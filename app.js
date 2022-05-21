@@ -37,13 +37,17 @@ app.get('/search', (req, res) => {
   }
   const keyword = req.query.keywords
   const keywords = req.query.keywords.trim().toLowerCase()
-  const filteredRestaurants = restaurantList.filter(
-    restaurant =>
-      restaurant.name.toLowerCase().includes(keywords) ||
-      restaurant.category.includes(keywords)
-  )
-  console.log(filteredRestaurants)
-  res.render('index', { restaurants: filteredRestaurants, keyword })
+  restaurantList.find({})
+    .lean()
+    .then(restaurants => {
+      const filteredRestaurants = restaurants.filter(
+        restaurant =>
+          restaurant.name.toLowerCase().includes(keywords) ||
+          restaurant.category.includes(keywords)
+      )
+      res.render('index', { restaurants: filteredRestaurants, keyword })
+    })
+    .catch(error => console.log(error))
 })
 
 app.get('/restaurants/:id', (req, res) => {
