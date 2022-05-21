@@ -1,22 +1,34 @@
-// app.js
-// require packages used in the project
 const express = require('express')
-const restaurantList = require('./restaurant.json').results
+const exphbs = require('express-handlebars')
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+const restaurantList = require('./models/restaurant')
+require('dotenv').config()
 const app = express()
 const port = 3000
+const db = mongoose.connection
 
-// require handlebars in the project
-const exphbs = require('express-handlebars')
+mongoose.connect(process.env.MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true }) // 設定連線到 mongoDB
+db.on('error', () => {
+  console.log('mongodb error!')
+})
+
+db.once('open', () => {
+  console.log('mongodb connected!')
+})
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
-
-// set static file
+app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 // routes setting
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList })
+  restaurantList.find()
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.log(error))
 })
 
 app.get('/search', (req, res) => {
@@ -39,7 +51,6 @@ app.get('/restaurants/:id', (req, res) => {
   res.render('show', { restaurant })
 })
 
-// start and listen on the Express server
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
 })
