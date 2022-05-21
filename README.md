@@ -1,9 +1,14 @@
 # Personal Favorite Restaurant Search Engine by Roger
 User can browse through the restaurants Roger likes.
+
 Clicking picturse of any restaurant or Detail button for more information. More information contains the type of the restaurant, address, phone number, and a brief description of the restaurant.
+
 Clicking Edit button to edit restaurant info.
+
 Click Delete button to delete a restaurant.
+
 Clicking Create button to create a new restaurant in navigation bar.
+
 On top of the restaurants list, it's a searching bar. You can type in English or Chinese characters to seach the name or the type of restaurants.
 
 ### Prerequisites
