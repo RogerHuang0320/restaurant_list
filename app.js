@@ -47,8 +47,11 @@ app.get('/search', (req, res) => {
 })
 
 app.get('/restaurants/:id', (req, res) => {
-  const restaurant = restaurantList.find(restaurant => restaurant.id.toString() === req.params.id)
-  res.render('show', { restaurant })
+  const id = req.params.id
+  return restaurantList.findById(id)
+    .lean()
+    .then((restaurant) => res.render('show', { restaurant }))
+    .catch(error => console.log(error))
 })
 
 app.listen(port, () => {
