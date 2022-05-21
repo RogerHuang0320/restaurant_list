@@ -1,5 +1,9 @@
 # Personal Favorite Restaurant Search Engine by Roger
-User can browse through the restaurants Roger likes by clicking the picture of any restaurant for more information. More information contains the type of the restaurant, address, phone number, and a brief description of the restaurant.
+User can browse through the restaurants Roger likes.
+Clicking picturse of any restaurant or Detail button for more information. More information contains the type of the restaurant, address, phone number, and a brief description of the restaurant.
+Clicking Edit button to edit restaurant info.
+Click Delete button to delete a restaurant.
+Clicking Create button to create a new restaurant in navigation bar.
 On top of the restaurants list, it's a searching bar. You can type in English or Chinese characters to seach the name or the type of restaurants.
 
 ### Prerequisites
@@ -8,7 +12,7 @@ Users need to get a local terminal software ready, for example, the Git Bash (fo
 * nvm (download this by searching on google "nvm".)
 * Node.js (use nvm to download this.)
 * express (use npm to install express)
-* nodemon (use npm to install nodemon)
+* mongoose (use npm to install mongoose)
 
 ### Installing
 
@@ -29,25 +33,32 @@ $ nvm install 16.14.2
 4. Go to the file where you cloned this project, and type in followiwng command to install express.
 
 ```
-$ npm install express@4.16.4
+$ npm i express@4.16.4
 ```
 
-5. Type in followiwng command to install nodemon.
+5. Type in followiwng command to install mongoose.
 
 ```
-$ npm install -g nodemon
+$ npm i mongoose@5.9.7
 ```
 
-6. Type in followiwng command to activate the router.
+6. Type in followiwng command to create seeder.
 
 ```
-$ nodemon app.js
+$ npm run seed
 ```
 
-7. If the terminal shows the words below, that means you have successfully open the project.
+7. Type in followiwng command to activate the router.
+
+```
+$ npn run dev
+```
+
+8. If the terminal shows the words below, that means you have successfully open the project.
 
 ```
 The Express server is running on http://localhost:3000
+mongodb connected!
 ```
 
 8. Open up any web browser and type in "http://localhost:3000" to start to use.
