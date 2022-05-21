@@ -66,7 +66,7 @@ The Express server is running on http://localhost:3000
 mongodb connected!
 ```
 
-8. Open up any web browser and type in "http://localhost:3000" to start to use.
+9. Open up any web browser and type in "http://localhost:3000" to start to use.
 
 ## Contributor
 
