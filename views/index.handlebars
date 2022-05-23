@@ -19,7 +19,7 @@
 <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
-    <div class="search-bar-inner">
+    <div class="row search-bar-inner justify-content-around">
       <form action="/search">
         <h4 class="mb-2 search-bar-title">尋找餐廳：</h4>
         <div class="input-group">
@@ -31,6 +31,16 @@
             </button>
           </div>
         </div>
+      </form>
+      <form action="./restaurants">
+        <h4 class="mb-2" for="sort">排序餐廳</h4>
+        <select id="sort" name="sort" onchange="form.submit()">
+          <option>請選擇...</option>
+          <option value="1">A -> Z</option>
+          <option value="2">Z -> A</option>
+          <option value="3">類別</option>
+          <option value="4">地區</option>
+        </select>
       </form>
     </div>
   </div>
