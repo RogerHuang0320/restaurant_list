@@ -1,21 +1,13 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
-const mongoose = require('mongoose')
+
 const bodyParser = require('body-parser')
 const restaurantList = require('./models/restaurant')
-require('dotenv').config()
 const app = express()
 const port = 3000
 const db = mongoose.connection
 
-mongoose.connect(process.env.MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true }) // 設定連線到 mongoDB
-db.on('error', () => {
-  console.log('mongodb error!')
-})
 
-db.once('open', () => {
-  console.log('mongodb connected!')
-})
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -28,17 +20,8 @@ app.get('/restaurants/new', (req, res) => {
 })
 
 app.post('/restaurants', (req, res) => {
-  const name = req.body.name
-  const category = req.body.category
-  const location = req.body.location
-  const google_map = req.body.google_map
-  const phone = req.body.phone
-  const description = req.body.description
-  const image = req.body.image
-  const rating = req.body.rating
-  return restaurantList.create({
-    name, category, location, google_map, phone, description, image, rating
-  })
+  console.log(req.body)
+  restaurantList.create(req.body)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
