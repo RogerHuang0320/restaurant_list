@@ -19,7 +19,7 @@
 </nav>
 
 <div class="container">
-  <form action="/restaurants/{{restaurant._id}}/edit" method="POST">
+  <form action="/restaurants/{{restaurant._id}}?_method=PUT" method="POST">
     <div class="row">
       <div class="col-12 col-md-10 mx-auto">
 
@@ -82,7 +82,7 @@
         <div>
           <button class="btn btn-primary" type="submit">Save</button>
           <a class="btn btn-success" href="/">back</a>
-          <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;">
+          <form action="/restaurants/{{ restaurant._id }}?_method=DELETE" method="POST" style="display: inline;">
             <button class="btn btn-danger" type="submit">delete</button>
           </form>
         </div>
