@@ -53,25 +53,10 @@ router.get('/search', (req, res) => {
 // })
 
 router.get('/restaurants', (req, res) => {
-  const sort = req.query.sort
-  let sortby = null
-  switch (sort) {
-    case '1':
-      sortby = { name: 'asc' }
-      break
-    case '2':
-      sortby = { name: 'desc' }
-      break
-    case '3':
-      sortby = { category: 'asc' }
-      break
-    case '4':
-      sortby = { location: 'asc' }
-      break
-  }
+  const [property, sortBy] = req.query.sort.split('_')
   restaurantList.find() // 取出 Model 裡的所有資料
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
-    .sort(sortby)
+    .sort({ [property]: sortBy })
     .then(restaurants => res.render('index', { restaurants })) // 將資料傳給 index 樣板
     .catch(error => console.error(error)) // 錯誤處理
 })
