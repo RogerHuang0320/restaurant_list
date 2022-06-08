@@ -13,5 +13,9 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('mongodb connected!')
   Restaurant.create(RestaurantData)
-  console.log('done')
+    .then(() => {
+      console.log("restaurantSeeder done!")
+    })
+    .catch(err => console.log(err))
+    .finally(() => db.close())  //加上去是為了讓seeder自動關掉
 })
