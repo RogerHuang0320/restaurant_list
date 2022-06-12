@@ -62,9 +62,11 @@ router.post('/register', (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-  req.logout() //Passport.js 提供的函式，清除 session
-  req.flash('success_msg', 'You have logged out successfully.')
-  req.redirect('/users/login')
+  req.logout(function (err) {
+    if (err) { return next(err); } //Passport.js 提供的函式，清除 session
+    req.flash('success_msg', 'You have logged out successfully.')
+    res.redirect('/users/login')
+  })
 })
 
 module.exports = router
