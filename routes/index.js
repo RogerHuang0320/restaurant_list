@@ -8,8 +8,8 @@ const { authenticator } = require('../middleware/auth')  // 掛載 middleware
 
 router.use('/search', home)
 router.use('/users', users)
-router.use('/auth', auth)
 router.use('/restaurants', authenticator, restaurants)
+router.use('/auth', auth)
 router.use('/', authenticator, home)
 
-module.exports = router
+module.exports = router;
