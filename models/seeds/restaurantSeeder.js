@@ -24,19 +24,20 @@ db.once('open', () => {
     })) //create完會回傳一個user，就是下面這個
     .then(user => {
       const userId = user._id
-      Promise.all(Array.from(RestaurantData, eachRes => {
-        eachRes.userId = userId
-        console.log('這是DATA' + RestaurantData)
-        console.log('這是each' + eachRes)
-        return Restaurant.create(RestaurantData)
-      }))
+      return Promise.all(Array.from(
+        RestaurantData,
+        eachRes => {
+          eachRes.userId = userId;
+          return Restaurant.create(eachRes)
+        }))
     })
 
     .then(() => {
       console.log("restaurantSeeder done!")
+      process.exit()
     })
     .catch(err => console.log(err))
-    .finally(() => db.close())  //加上去是為了讓seeder自動關掉
+  // .finally(() => db.close())  //加上去是為了讓seeder自動關掉
 })
 
 db.on('error', () => {
