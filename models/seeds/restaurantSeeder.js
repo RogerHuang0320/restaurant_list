@@ -20,7 +20,7 @@ const SEED_USER = [{
 db.once('open', () => {
   return Promise.all(
     Array.from({ length: SEED_USER.length }, (_, i) => {
-      return bcrypt  //為了建立user用的
+      return bcrypt //為了建立user用的
         .genSalt(10)
         .then(salt => bcrypt.hash(SEED_USER[i].password, salt))
         .then(hash => User.create({

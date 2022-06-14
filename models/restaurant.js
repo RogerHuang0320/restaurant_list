@@ -11,7 +11,7 @@ const restaurantSchema = new Schema({
   rating: { type: Number, required: true },
   description: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
-  userId: {  // 加入關聯設定
+  userId: { // 加入關聯設定
     type: Schema.Types.ObjectId,
     ref: 'User',
     index: true,
