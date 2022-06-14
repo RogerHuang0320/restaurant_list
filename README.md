@@ -1,5 +1,12 @@
-# Personal Favorite Restaurant Search Engine by Roger
-User can browse through the restaurants Roger likes.
+![restaurant_roger.gif](./restaurant_roger.gif)
+
+# Personal Favorite Restaurant Collection Platform
+User can browse through the restaurants they like by signing in or to register for an account.
+<br>
+Testing account:
+<br>
+* user1@example.com/ 12345678
+* user2@example.com/ 12345678
 
 Clicking picturse of any restaurant or Detail button for more information. More information contains the type of the restaurant, address, phone number, and a brief description of the restaurant.
 
@@ -47,27 +54,60 @@ $ npm i express@4.16.4
 $ npm i mongoose@5.9.7
 ```
 
-6. Type in followiwng command to create seeder.
+6. Type in followiwng command to install dotenv.
 
 ```
-$ npm run seed
+$ npm i dotenv
 ```
 
-7. Type in followiwng command to activate the router.
+7. Type in followiwng command to install bcryptjs.
+
+```
+$ npn i bcryptjs
+```
+
+### Usage
+
+1. Create a .env file at root, refering to .env.example for more details.
+
+2. Run seeder to create restaurant data and users.
+```
+$ npn run seed
+```
+
+3.Type in followiwng command to activate router.
 
 ```
 $ npn run dev
 ```
 
-8. If the terminal shows the words below, that means you have successfully open the project.
+4. If the terminal shows the words below, that means you have successfully open the project.
 
 ```
 The Express server is running on http://localhost:3000
 mongodb connected!
 ```
 
-9. Open up any web browser and type in "http://localhost:3000" to start to use.
+5. Open up any web browser and type in "http://localhost:3000" to start to use.
 
 ## Contributor
 
 > [Roger Huang](https://github.com/RogerHuang0320)
+
+## Built with
+
+* Node.js @14.16.0
+* Express.js @4.16.4
+* express-handlebars @3.0.0
+* mongoose @5.9.7
+* Bootstrap @4.3.1
+* Font-awesome @5.8.1
+* body-parser @1.20.0
+* bcryptjs @2.4.3
+* connect-flash @0.1.1
+* dotenv @16.0.1
+* express-session @1.17.3
+* Method-override @3.0.0 
+* passport @0.6.0
+* passport-facebook @3.0.0
+* passport-local @1.0.0
