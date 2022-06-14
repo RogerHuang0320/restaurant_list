@@ -10,9 +10,8 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/users/login'
+  failureRedirect: '/users/login',
 }))
-
 
 router.get('/register', (req, res) => {
   return res.render('register')
@@ -21,11 +20,11 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
   const errors = []
-  if (!name || !email || !password || !confirmPassword) {
-    errors.push[{ message: 'You have to fill in every blank.' }]
+  if (!email || !password || !confirmPassword) {
+    return errors.push({ message: 'You have to fill in every blank except for the name.' })
   }
   if (password !== confirmPassword) {
-    errors.push[{ message: 'The two passwords you put in do not match' }]
+    return errors.push({ message: 'The two passwords you put in do not match' })
   }
   if (errors.length) {
     return res.render('register', {
@@ -36,28 +35,29 @@ router.post('/register', (req, res) => {
       confirmPassword
     })
   }
-  User.findOne({ email }).then(user => {
-    if (user) {
-      errors.push[{ message: 'This email has been registered.Please use another.' }]
-      res.render('register', {
-        errors,
-        name,
-        email,
-        password,
-        confirmPassword
-      })
-    }
-    return bcrypt
-      .genSalt(10)
-      .then(salt => bcrypt.hash(password, salt))
-      .then(hash => User.create({
-        name,
-        email,
-        password: hash
-      }))
-      .then(() => res.redirect('/'))
-      .catch((err) => console.log(err))
-  })
+  User.findOne({ email })
+    .then(user => {
+      if (user) {
+        errors.push({ message: 'This email has been registered.Please use another.' })
+        return res.render('register', {
+          errors,
+          name,
+          email,
+          password,
+          confirmPassword
+        })
+      }
+      return bcrypt
+        .genSalt(10)
+        .then(salt => bcrypt.hash(password, salt))
+        .then(hash => User.create({
+          name,
+          email,
+          password: hash
+        }))
+        .then(() => res.redirect('/'))
+        .catch((err) => console.log(err))
+    })
     .catch(error => console.log(error))
 })
 
