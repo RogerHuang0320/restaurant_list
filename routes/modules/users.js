@@ -21,10 +21,10 @@ router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
   const errors = []
   if (!email || !password || !confirmPassword) {
-    return errors.push({ message: 'You have to fill in every blank except for the name.' })
+    errors.push({ message: 'You have to fill in every blank except for the name.' })
   }
   if (password !== confirmPassword) {
-    return errors.push({ message: 'The two passwords you put in do not match' })
+    errors.push({ message: 'The two passwords you put in do not match' })
   }
   if (errors.length) {
     return res.render('register', {
